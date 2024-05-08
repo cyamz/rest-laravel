@@ -10,14 +10,9 @@ class WebSocketTool
     private static function request($type, $data)
     {
         $time = date('Y-m-d H:i:s');
-        $sign = encrypt([
-            'type' => $type,
-            'time' => $time,
-        ], true);
 
         $data['type'] = $type;
         $data['time'] = $time;
-        $data['sign'] = $sign;
 
         $client = self::getClient();
 
