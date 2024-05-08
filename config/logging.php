@@ -58,6 +58,90 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'sql' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/sql.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 200,
+            'replace_placeholders' => true,
+        ],
+
+        'temp_log' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/temp_log.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 31,
+            'replace_placeholders' => true,
+        ],
+
+        'websocket' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/websocket.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 200,
+            'replace_placeholders' => true,
+        ],
+
+        'websocket_client' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/websocket_client.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 200,
+            'replace_placeholders' => true,
+        ],
+
+        'request' => [
+            'driver' => 'daily',
+            'tap' => [Freshbitsweb\LaravelLogEnhancer\LogEnhancer::class],
+            'path' => storage_path('logs/request.log'),
+            'level' => env('LOG_LEVEL', 'error'),
+            'days' => 200,
+            'replace_placeholders' => true,
+        ],
+
+        'info_response' => [
+            'driver' => 'daily',
+            'tap' => [Freshbitsweb\LaravelLogEnhancer\LogEnhancer::class],
+            'path' => storage_path('logs/info.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 200,
+            'replace_placeholders' => true,
+        ],
+
+        'error_response' => [
+            'driver' => 'daily',
+            'tap' => [Freshbitsweb\LaravelLogEnhancer\LogEnhancer::class],
+            'path' => storage_path('logs/error.log'),
+            'level' => env('LOG_LEVEL', 'error'),
+            'days' => 200,
+            'replace_placeholders' => true,
+        ],
+
+        'user_request' => [
+            'driver' => 'daily',
+            'tap' => [Freshbitsweb\LaravelLogEnhancer\LogEnhancer::class],
+            'path' => storage_path('logs/user.log'),
+            'level' => env('LOG_LEVEL', 'info'),
+            'days' => 200,
+            'replace_placeholders' => true,
+        ],
+
+        'overtime' => [
+            'driver' => 'daily',
+            'tap' => [Freshbitsweb\LaravelLogEnhancer\LogEnhancer::class],
+            'path' => storage_path('logs/overtime.log'),
+            'level' => env('LOG_LEVEL', 'info')
+        ],
+
+        'exception' => [
+            'driver' => 'daily',
+            'tap' => [Freshbitsweb\LaravelLogEnhancer\LogEnhancer::class],
+            'path' => storage_path('logs/exception.log'),
+            'level' => env('LOG_LEVEL', 'emergency'),
+            'days' => 31,
+            'replace_placeholders' => true,
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
