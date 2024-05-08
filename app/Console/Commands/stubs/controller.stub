@@ -1,0 +1,84 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Models\{{ model }};
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class {{ class }} extends MyApiController
+{
+    /**
+     * 获取列表 GET
+     *
+     * @param  Request  $request
+     * @return void
+     */
+    public function index(Request $request): void
+    {
+        $params = $request->input();
+
+        $query = {{ model }}::query();
+        $query->equalExistParams($params);
+
+        $paginate = $query->paginate($params['pageSize'] ?? $this->page_size);
+        $paginate->appends($params);
+
+        $this->success($paginate);
+    }
+
+    /**
+     * 新增 POST
+     *
+     * @param  Request  $request
+     * @return void
+     */
+    public function store(Request $request): void
+    {
+        ${{ modelVariable }} = new {{ model }}();
+        ${{ modelVariable }}->fillExistAttributes($request->all());
+        ${{ modelVariable }}->save();
+
+        $this->successCreate(${{ modelVariable }});
+    }
+
+    /**
+     * 获取详情 GET
+     *
+     * @param  int  $id
+     * @return void
+     */
+    public function show({{ model }} ${{ modelVariable }}): void
+    {
+        $this->success(${{ modelVariable }});
+    }
+
+    /**
+     * 更新(部分) PATCH
+     *
+     * @param  Request  $request
+     * @param  int  $id
+     * @return void
+     */
+    public function update(Request $request, {{ model }} ${{ modelVariable }}): void
+    {
+        ${{ modelVariable }}->fillExistAttributes($request->all());
+        ${{ modelVariable }}->save();
+
+        $this->success(${{ modelVariable }});
+    }
+
+    /**
+     * 删除 DELETE
+     *
+     * @param  int  $id
+     * @return void
+     */
+    public function destroy({{ model }} ${{ modelVariable }}): void
+    {
+        ${{ modelVariable }}->delete();
+
+        $this->success();
+    }
+
+}

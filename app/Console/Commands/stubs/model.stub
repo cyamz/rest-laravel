@@ -1,0 +1,36 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+class {{ class }} extends MyModel
+{
+    use HasFactory;
+
+    /** 静态数据 START */
+    /** 静态数据 END */
+
+    /** boot START */
+    protected static function boot()
+    {
+        parent::boot();
+    }
+    /** boot END */
+
+    /** 模型关联 START */
+    /** 模型关联 END */
+
+    /** 局部作用域 scope START */
+    /** 局部作用域 scope END */
+
+    /** 属性访问器 get*Attribute START */
+    /** 属性访问器 get*Attribute END */
+
+    /** 属性修改器 set*Attribute START */
+    /** 属性修改器 set*Attribute END */
+
+    /** 静态方法 START **/
+    /** 静态方法 END **/
+
+}
