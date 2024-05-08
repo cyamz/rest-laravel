@@ -39,9 +39,15 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            // 系统日志，生成并记录request_id
+            SystemLog::class,
+            // 确认HTTP头
+            EnsureHttpHeaderIsValid::class,
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            // 记录 user-request 日志
+            UserLog::class
         ],
     ];
 
