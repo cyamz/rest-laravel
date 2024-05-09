@@ -2,6 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\EnsureHttpHeaderIsValid;
+use App\Http\Middleware\SystemLog;
+use App\Http\Middleware\UserLog;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
